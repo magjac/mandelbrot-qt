@@ -1,3 +1,4 @@
+#include "main.h"
 #include <QApplication>
 #include <QPushButton>
 #include <QGraphicsScene>
@@ -54,6 +55,11 @@ void plot_mandelbrot(QPainter *p, int height, int width, Complex min, Complex ma
     }
 }
 
+void Mandelbrot::ready(const QList<QRectF> &region)
+{
+    std::cout << "READY! " << std::endl;
+}
+
 int main(int argc, char *argv[])
 {
     const Complex min (-2.5, -1.5);
@@ -69,9 +75,13 @@ int main(int argc, char *argv[])
     QPixmap pixmap(width, height);
     QPainter p(&pixmap);
 
+    Mandelbrot mandelbrot;
+    QObject::connect(&scene, &QGraphicsScene::changed,
+                     &mandelbrot, &Mandelbrot::ready);
     const int max_iter = 100;
 
     plot_mandelbrot(&p, height, width, min, max, max_iter);
     scene.addPixmap(pixmap);
+
     return a.exec();
 }
