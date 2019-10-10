@@ -1,4 +1,4 @@
-#include "main.h"
+#include "mandelbrot.h"
 #include <QApplication>
 #include <QPushButton>
 #include <QGraphicsScene>
@@ -53,11 +53,6 @@ void plot_mandelbrot(QPainter *p, int height, int width, Complex min, Complex ma
             p->drawPoint(ic, ir);
         }
     }
-}
-
-void Mandelbrot::ready(const QList<QRectF> &region)
-{
-    std::cout << "READY! " << std::endl;
 }
 
 int main(int argc, char *argv[])
