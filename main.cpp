@@ -1,3 +1,4 @@
+#include "complex.h"
 #include "mandelbrot.h"
 #include <QApplication>
 #include <QPushButton>
@@ -5,32 +6,6 @@
 #include <QGraphicsView>
 
 #include <iostream>
-#include <math.h>
-
-class Complex {
-  public:
-    Complex() {}
-    Complex(double r, double i) {
-      re = r;
-      im = i;
-    };
-    double re, im;
-    Complex operator + (const Complex& param) {
-      Complex temp;
-      temp.re = re + param.re;
-      temp.im = im + param.im;
-      return temp;
-    }
-    Complex operator * (const Complex& param) {
-      Complex temp;
-      temp.re = re * param.re - im * param.im;
-      temp.im = re * param.im + im * param.re;
-      return temp;
-    }
-    double abs () {
-      return sqrt(re * re + im * im);
-    }
-};
 
 int iterate(Complex c, int limit) {
   Complex z (0.0, 0.0);
