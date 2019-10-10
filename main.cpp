@@ -5,13 +5,14 @@
 
 int main(int argc, char *argv[])
 {
+    const int width = 1024;
+    const int height = 512;
+
     QApplication a(argc, argv);
-    QGraphicsScene scene (0, 0, 1024, 512);
+    QGraphicsScene scene (0, 0, width, height);
     QGraphicsView view(&scene);
     view.show();
 
-    const int width = 1024;
-    const int height = 512;
     QPixmap pixmap(width, height);
     QPainter p(&pixmap);
 
