@@ -40,6 +40,20 @@ int iterate(Complex c, int limit) {
   return n;
 }
 
+void plot_mandelbrot(QPainter *p, int height, int width, Complex min, Complex max, int max_iter) {
+    for (int ir = 0; ir < height; ir++)
+    {
+        for (int ic = 0; ic < width; ic++)
+        {
+            Complex c (min.re + (max.re - min.re) * ic / width, min.im + (max.im - min.im) * ir / height);
+            int n = iterate(c, max_iter);
+            QColor color (0, 0, 255 - n * 255 / max_iter);
+            p->setPen(color);
+            p->drawPoint(ic, ir);
+        }
+    }
+}
+
 int main(int argc, char *argv[])
 {
     const Complex min (-2.5, -1.5);
@@ -57,17 +71,7 @@ int main(int argc, char *argv[])
 
     const int max_iter = 100;
 
-    for (int ir = 0; ir < height; ir++)
-    {
-        for (int ic = 0; ic < width; ic++)
-        {
-            Complex c (min.re + (max.re - min.re) * ic / width, min.im + (max.im - min.im) * ir / height);
-            int n = iterate(c, max_iter);
-            QColor color (0, 0, 255 - n * 255 / max_iter);
-            p.setPen(color);
-            p.drawPoint(ic, ir);
-        }
-    }
+    plot_mandelbrot(&p, height, width, min, max, max_iter);
     scene.addPixmap(pixmap);
     return a.exec();
 }
