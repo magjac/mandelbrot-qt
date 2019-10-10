@@ -21,12 +21,15 @@ int main(int argc, char *argv[])
     QPixmap pixmap(width, height);
     QPainter p(&pixmap);
 
-    Mandelbrot mandelbrot;
+    Mandelbrot mandelbrot(&p);
+    mandelbrot.set_size(width, height);
+    mandelbrot.set_boundaries(min, max);
     QObject::connect(&scene, &QGraphicsScene::changed,
                      &mandelbrot, &Mandelbrot::ready);
     const int max_iter = 100;
+    mandelbrot.set_max_iter(max_iter);
 
-    mandelbrot.plot(&p, height, width, min, max, max_iter);
+    mandelbrot.plot();
     scene.addPixmap(pixmap);
 
     return a.exec();
