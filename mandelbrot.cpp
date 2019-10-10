@@ -41,5 +41,6 @@ void Mandelbrot::plot() {
             m_painter->drawPoint(ic, ir);
         }
     }
+    m_scene->addPixmap(*m_pixmap);
 }
 

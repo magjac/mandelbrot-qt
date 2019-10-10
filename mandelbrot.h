@@ -5,6 +5,8 @@
 #include <QObject>
 #include <QList>
 #include <QRect>
+#include <QGraphicsScene>
+#include <QPixmap>
 #include <QPainter>
 
 class Mandelbrot : public QObject
@@ -12,8 +14,10 @@ class Mandelbrot : public QObject
     Q_OBJECT
 
 public:
-    Mandelbrot(QPainter *p) {
-        m_painter = p;
+    Mandelbrot(QGraphicsScene *scene, QPixmap *pixmap, QPainter *painter) {
+        m_scene = scene;
+        m_pixmap = pixmap;
+        m_painter = painter;
         m_height = 1024;
         m_width = 1024;
         m_min = Complex(-2.0, -2.0);
@@ -29,6 +33,8 @@ public slots:
     void ready(const QList<QRectF> &region);
 
 private:
+    QGraphicsScene *m_scene;
+    QPixmap *m_pixmap;
     QPainter *m_painter;
     int m_height;
     int m_width;
