@@ -16,6 +16,8 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     QGraphicsScene scene (0, 0, width, height);
     QGraphicsView view(&scene);
+    view.setHorizontalScrollBarPolicy ( Qt::ScrollBarAlwaysOff );
+    view.setVerticalScrollBarPolicy ( Qt::ScrollBarAlwaysOff );
     view.show();
 
     QPixmap pixmap(width, height);
