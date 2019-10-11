@@ -17,7 +17,8 @@ class Mandelbrot : public QObject
     Q_OBJECT
 
 public:
-    Mandelbrot(QGraphicsScene *scene, QPixmap *pixmap, QPainter *painter) {
+    Mandelbrot(QApplication *app, QGraphicsScene *scene, QPixmap *pixmap, QPainter *painter) {
+        m_app = app;
         m_scene = scene;
         m_pixmap = pixmap;
         m_painter = painter;
@@ -54,6 +55,7 @@ public slots:
     void ready(const QList<QRectF> &region);
 
 private:
+    QApplication *m_app;
     QGraphicsScene *m_scene;
     QPixmap *m_pixmap;
     QPainter *m_painter;

@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
     QPixmap pixmap(width, height);
     QPainter painter(&pixmap);
 
-    Mandelbrot mandelbrot(&scene, &pixmap, &painter);
+    Mandelbrot mandelbrot(&a, &scene, &pixmap, &painter);
     mandelbrot.set_size(width, height);
     mandelbrot.set_boundaries(min, max);
     mandelbrot.set_center(Complex(-0.743643887037158704752191506114774, 0.131825904205311970493132056385139));

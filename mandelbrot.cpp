@@ -29,6 +29,10 @@ void Mandelbrot::ready(const QList<QRectF> &region)
         return;
     }
     m_num_plots++;
+    if (m_num_plots == 5) {
+        m_app->quit();
+        return;
+    }
     QCoreApplication::processEvents();
     plot();
     Complex current_center ((m_min.real() + m_max.real()) / 2.0, (m_min.imag() + m_max.imag()) / 2.0);
@@ -41,7 +45,7 @@ void Mandelbrot::ready(const QList<QRectF> &region)
 int Mandelbrot::iterate(Complex c, int limit) {
   Complex z (0.0, 0.0);
   int n;
-  for (n = 0; n < limit && abs(z) < 2.0; n++) {
+  for (n = 0; n < limit && norm(z) < 4.0; n++) {
     z = z * z + c;
   }
   return n;
