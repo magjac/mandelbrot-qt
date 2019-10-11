@@ -1,7 +1,7 @@
 #ifndef MAIN
 #define MAIN
 
-#include "complex.h"
+#include <complex>
 #include <QObject>
 #include <QList>
 #include <QRect>
@@ -9,6 +9,8 @@
 #include <QPixmap>
 #include <QPainter>
 #include <QColor>
+
+typedef std::complex<double> Complex;
 
 class Mandelbrot : public QObject
 {

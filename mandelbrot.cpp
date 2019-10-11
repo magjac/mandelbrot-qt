@@ -16,7 +16,7 @@ void Mandelbrot::set_max_iter(int max_iter) {
     m_max_iter = max_iter;
 }
 void Mandelbrot::set_center(Complex center) {
-    Complex current_center ((m_min.re + m_max.re) / 2.0, (m_min.im + m_max.im) / 2.0);
+    Complex current_center ((m_min.real() + m_max.real()) / 2.0, (m_min.imag() + m_max.imag()) / 2.0);
     Complex offset = center - current_center;
     m_min = m_min + offset;
     m_max = m_max + offset;
@@ -31,17 +31,17 @@ void Mandelbrot::ready(const QList<QRectF> &region)
     m_num_plots++;
     QCoreApplication::processEvents();
     plot();
-    Complex current_center ((m_min.re + m_max.re) / 2.0, (m_min.im + m_max.im) / 2.0);
-    m_min.re = current_center.re - (current_center.re - m_min.re) * 0.9;
-    m_min.im = current_center.im - (current_center.im - m_min.im) * 0.9;
-    m_max.re = current_center.re + (m_max.re - current_center.re) * 0.9;
-    m_max.im = current_center.im + (m_max.im - current_center.im) * 0.9;
+    Complex current_center ((m_min.real() + m_max.real()) / 2.0, (m_min.imag() + m_max.imag()) / 2.0);
+    m_min.real(current_center.real() - (current_center.real() - m_min.real()) * 0.9);
+    m_min.imag(current_center.imag() - (current_center.imag() - m_min.imag()) * 0.9);
+    m_max.real(current_center.real() + (m_max.real() - current_center.real()) * 0.9);
+    m_max.imag(current_center.imag() + (m_max.imag() - current_center.imag()) * 0.9);
 }
 
 int Mandelbrot::iterate(Complex c, int limit) {
   Complex z (0.0, 0.0);
   int n;
-  for (n = 0; n < limit && z.abs() < 2.0; n++) {
+  for (n = 0; n < limit && abs(z) < 2.0; n++) {
     z = z * z + c;
   }
   return n;
@@ -52,7 +52,7 @@ void Mandelbrot::plot() {
     {
         for (int ic = 0; ic < m_width; ic++)
         {
-            Complex c (m_min.re + (m_max.re - m_min.re) * ic / m_width, m_min.im + (m_max.im - m_min.im) * ir / m_height);
+            Complex c (m_min.real() + (m_max.real() - m_min.real()) * ic / m_width, m_min.imag() + (m_max.imag() - m_min.imag()) * ir / m_height);
             int n = iterate(c, m_max_iter);
             QColor color;
             if (n < m_max_iter && n > 0) {
