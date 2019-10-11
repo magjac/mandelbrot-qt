@@ -27,7 +27,7 @@ int main(int argc, char *argv[])
     mandelbrot.set_center(Complex(-0.743643887037158704752191506114774, 0.131825904205311970493132056385139));
     QObject::connect(&scene, &QGraphicsScene::changed,
                      &mandelbrot, &Mandelbrot::ready);
-    const int max_iter = 100;
+    const int max_iter = 255;
     mandelbrot.set_max_iter(max_iter);
 
     mandelbrot.plot();
