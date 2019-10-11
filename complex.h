@@ -10,6 +10,7 @@ class Complex {
     }
     double re, im;
     Complex operator + (const Complex& param);
+    Complex operator - (const Complex& param);
     Complex operator * (const Complex& param);
     double abs ();
 };

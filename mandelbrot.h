@@ -30,6 +30,7 @@ public slots:
     void set_size(int width, int height);
     void set_boundaries(Complex min, Complex max);
     void set_max_iter(int max_iter);
+    void set_center(Complex center);
     void ready(const QList<QRectF> &region);
 
 private:

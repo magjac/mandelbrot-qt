@@ -8,6 +8,13 @@ Complex Complex::operator + (const Complex& param) {
     return temp;
 }
 
+Complex Complex::operator - (const Complex& param) {
+    Complex temp;
+    temp.re = re - param.re;
+    temp.im = im - param.im;
+    return temp;
+}
+
 Complex Complex::operator * (const Complex& param) {
     Complex temp;
     temp.re = re * param.re - im * param.im;
