@@ -32,7 +32,5 @@ int main(int argc, char *argv[])
     const int max_iter = 255;
     mandelbrot.set_max_iter(max_iter);
 
-    mandelbrot.plot();
-
     return a.exec();
 }
