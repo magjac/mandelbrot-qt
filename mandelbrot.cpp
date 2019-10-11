@@ -24,6 +24,9 @@ void Mandelbrot::set_center(Complex center) {
 void Mandelbrot::ready(const QList<QRectF> &region)
 {
     std::cout << "READY with plot " << m_num_plots << std::endl;
+    if (region.size() == 0) {
+        return;
+    }
     m_num_plots++;
     Complex current_center ((m_min.re + m_max.re) / 2.0, (m_min.im + m_max.im) / 2.0);
     m_min.re = current_center.re - (current_center.re - m_min.re) * 0.9;
