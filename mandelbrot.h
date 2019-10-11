@@ -23,6 +23,7 @@ public:
         m_min = Complex(-2.0, -2.0);
         m_max = Complex(2.0, 2.0);
         m_max_iter = 100;
+        m_num_plots = 0;
     }
     void plot();
 
@@ -42,6 +43,7 @@ private:
     Complex m_min;
     Complex m_max;
     int m_max_iter;
+    int m_num_plots;
     int iterate(Complex c, int limit);
 
 };
