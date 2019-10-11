@@ -54,7 +54,12 @@ void Mandelbrot::plot() {
         {
             Complex c (m_min.re + (m_max.re - m_min.re) * ic / m_width, m_min.im + (m_max.im - m_min.im) * ir / m_height);
             int n = iterate(c, m_max_iter);
-            QColor color (0, 0, 255 - n * 255 / m_max_iter);
+            QColor color;
+            if (n < m_max_iter && n > 0) {
+                color = {m_color_map[n % 16]};
+            } else {
+                color = Qt::black;
+            }
             m_painter->setPen(color);
             m_painter->drawPoint(ic, ir);
         }
