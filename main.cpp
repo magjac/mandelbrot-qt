@@ -24,7 +24,7 @@ int main(int argc, char *argv[])
     QPainter painter(&pixmap);
 
     Mandelbrot mandelbrot(&a, &scene, &pixmap, &painter);
-    mandelbrot.set_size(width, height);
+    mandelbrot.set_image_size(width, height);
     mandelbrot.set_boundaries(min, max);
     mandelbrot.set_center(Complex(-0.743643887037158704752191506114774, 0.131825904205311970493132056385139));
     QObject::connect(&scene, &QGraphicsScene::changed,

@@ -2,7 +2,7 @@
 #include "mandelbrot.h"
 #include <iostream>
 
-void Mandelbrot::set_size(int width, int height) {
+void Mandelbrot::set_image_size(int width, int height) {
     m_width = width;
     m_height = height;
 }
