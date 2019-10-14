@@ -3,8 +3,8 @@
 #include <iostream>
 
 void Mandelbrot::set_image_size(int width, int height) {
-    m_width = width;
-    m_height = height;
+    m_image_width = width;
+    m_image_height = height;
 }
 
 void Mandelbrot::set_boundaries(Complex min, Complex max) {
@@ -51,11 +51,11 @@ int Mandelbrot::iterate(Complex c, int limit) {
 }
 
 void Mandelbrot::plot() {
-    for (int ir = 0; ir < m_height; ir++)
+    for (int ir = 0; ir < m_image_height; ir++)
     {
-        for (int ic = 0; ic < m_width; ic++)
+        for (int ic = 0; ic < m_image_width; ic++)
         {
-            Complex c (m_min.real() + (m_max.real() - m_min.real()) * ic / m_width, m_min.imag() + (m_max.imag() - m_min.imag()) * ir / m_height);
+            Complex c (m_min.real() + (m_max.real() - m_min.real()) * ic / m_image_width, m_min.imag() + (m_max.imag() - m_min.imag()) * ir / m_image_height);
             int n = iterate(c, m_max_iter);
             QColor color;
             if (n < m_max_iter && n > 0) {
@@ -64,7 +64,7 @@ void Mandelbrot::plot() {
                 color = Qt::black;
             }
             m_painter->setPen(color);
-            m_painter->drawPoint(ic, m_height - 1 - ir);
+            m_painter->drawPoint(ic, m_image_height - 1 - ir);
         }
     }
     m_scene->addPixmap(*m_pixmap);

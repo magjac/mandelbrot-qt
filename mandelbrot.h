@@ -22,8 +22,8 @@ public:
         m_scene = scene;
         m_pixmap = pixmap;
         m_painter = painter;
-        m_height = 1024;
-        m_width = 1024;
+        m_image_height = 1024;
+        m_image_width = 1024;
         m_min = Complex(-2.0, -2.0);
         m_max = Complex(2.0, 2.0);
         m_max_iter = 100;
@@ -59,8 +59,8 @@ private:
     QGraphicsScene *m_scene;
     QPixmap *m_pixmap;
     QPainter *m_painter;
-    int m_height;
-    int m_width;
+    int m_image_height;
+    int m_image_width;
     Complex m_min;
     Complex m_max;
     int m_max_iter;
