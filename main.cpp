@@ -8,8 +8,6 @@
 
 int main(int argc, char *argv[])
 {
-    const Complex min (-2.5, -1.5);
-    const Complex max (1.5, 1.5);
     const int image_width = 256;
     const int image_height = image_width * 3 / 4;
 
@@ -25,8 +23,8 @@ int main(int argc, char *argv[])
 
     Mandelbrot mandelbrot(&a, &scene, &pixmap, &painter);
     mandelbrot.set_image_size(image_width, image_height);
-    mandelbrot.set_boundaries(min, max);
     mandelbrot.set_center(Complex(-0.743643887037158704752191506114774L, 0.131825904205311970493132056385139L));
+    mandelbrot.set_size(Complex(4.0, 3.0));
     QObject::connect(&scene, &QGraphicsScene::changed,
                      &mandelbrot, &Mandelbrot::ready);
     const int max_iter = 255;

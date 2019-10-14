@@ -20,6 +20,10 @@ void Mandelbrot::set_center(Complex center) {
     m_center = center;
 }
 
+void Mandelbrot::set_size(Complex size) {
+    m_size = size;
+}
+
 void Mandelbrot::ready(const QList<QRectF> &region)
 {
     std::cout << "READY with plot " << m_num_plots << std::endl;
