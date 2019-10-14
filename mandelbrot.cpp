@@ -26,7 +26,6 @@ void Mandelbrot::set_size(Complex size) {
 
 void Mandelbrot::ready(const QList<QRectF> &region)
 {
-    std::cout << "READY with plot " << m_num_plots << std::endl;
     if (region.size() == 0) {
         return;
     }
