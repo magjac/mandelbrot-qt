@@ -64,7 +64,7 @@ void Mandelbrot::plot() {
                 color = Qt::black;
             }
             m_painter->setPen(color);
-            m_painter->drawPoint(ic, ir);
+            m_painter->drawPoint(ic, m_height - 1 - ir);
         }
     }
     m_scene->addPixmap(*m_pixmap);
