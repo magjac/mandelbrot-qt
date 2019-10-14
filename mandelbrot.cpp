@@ -8,7 +8,7 @@ void Mandelbrot::set_image_size(int width, int height) {
 }
 
 void Mandelbrot::set_boundaries(Complex min, Complex max) {
-    m_center = (min + max ) / 2.0;
+    m_center = (min + max ) / 2.0L;
     m_size = max - min;
 }
 

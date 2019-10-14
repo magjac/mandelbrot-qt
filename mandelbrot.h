@@ -10,7 +10,7 @@
 #include <QPainter>
 #include <QColor>
 
-typedef std::complex<double> Complex;
+typedef std::complex<long double> Complex;
 
 class Mandelbrot : public QObject
 {
