@@ -27,7 +27,7 @@ int main(int argc, char *argv[])
     mandelbrot.set_size(Complex(4.0, 3.0));
     QObject::connect(&scene, &QGraphicsScene::changed,
                      &mandelbrot, &Mandelbrot::ready);
-    const int max_iter = 255;
+    const int max_iter = 8191;
     mandelbrot.set_max_iter(max_iter);
 
     return a.exec();
