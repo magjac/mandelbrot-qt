@@ -1,6 +1,7 @@
 #include <QApplication>
 #include "mandelbrot.h"
 #include <iostream>
+#include <iomanip>
 
 void Mandelbrot::set_image_size(int width, int height) {
     m_image_width = width;
@@ -44,6 +45,12 @@ int Mandelbrot::iterate(Complex c, int limit) {
 }
 
 void Mandelbrot::plot() {
+    std::cout.precision(33);
+    std::cout << "Calculating plot number " << m_num_plots << std::endl;
+    std::cout << "Center = " << std::fixed << std::setfill(' ') << std::setw(36) << m_center.real() << ", " << std::setw(36) << m_center.imag() << std::endl;
+    std::cout << "Size   = " << std::fixed << std::setfill(' ') << std::setw(36) << m_size.real() << ", " << std::setw(36) << m_size.imag() << std::endl;
+    std::cout.precision(1);
+    std::cout << "Size   = " << std::scientific << m_size << std::endl;
     for (int ir = 0; ir < m_image_height; ir++)
     {
         for (int ic = 0; ic < m_image_width; ic++)
