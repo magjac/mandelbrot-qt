@@ -30,7 +30,7 @@ void Mandelbrot::ready(const QList<QRectF> &region)
     if (region.size() == 0) {
         return;
     }
-    if (m_num_plots == 5) {
+    if (m_num_plots == 500) {
         m_app->quit();
         return;
     }
