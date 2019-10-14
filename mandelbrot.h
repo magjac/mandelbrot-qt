@@ -24,8 +24,8 @@ public:
         m_painter = painter;
         m_image_height = 1024;
         m_image_width = 1024;
-        m_min = Complex(-2.0, -2.0);
-        m_max = Complex(2.0, 2.0);
+        m_center = Complex(0.0, 0.0);
+        m_size = Complex(4.0, 4.0);
         m_max_iter = 100;
         m_num_plots = 0;
         m_color_map[0].setRgb(66, 30, 15);
@@ -61,8 +61,8 @@ private:
     QPainter *m_painter;
     int m_image_height;
     int m_image_width;
-    Complex m_min;
-    Complex m_max;
+    Complex m_center;
+    Complex m_size;
     int m_max_iter;
     int m_num_plots;
     int iterate(Complex c, int limit);

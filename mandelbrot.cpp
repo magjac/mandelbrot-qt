@@ -8,18 +8,15 @@ void Mandelbrot::set_image_size(int width, int height) {
 }
 
 void Mandelbrot::set_boundaries(Complex min, Complex max) {
-    m_min = min;
-    m_max = max;
+    m_center = (min + max ) / 2.0;
+    m_size = max - min;
 }
 
 void Mandelbrot::set_max_iter(int max_iter) {
     m_max_iter = max_iter;
 }
 void Mandelbrot::set_center(Complex center) {
-    Complex current_center ((m_min.real() + m_max.real()) / 2.0, (m_min.imag() + m_max.imag()) / 2.0);
-    Complex offset = center - current_center;
-    m_min = m_min + offset;
-    m_max = m_max + offset;
+    m_center = center;
 }
 
 void Mandelbrot::ready(const QList<QRectF> &region)
@@ -34,11 +31,7 @@ void Mandelbrot::ready(const QList<QRectF> &region)
     }
     QCoreApplication::processEvents();
     plot();
-    Complex current_center ((m_min.real() + m_max.real()) / 2.0, (m_min.imag() + m_max.imag()) / 2.0);
-    m_min.real(current_center.real() - (current_center.real() - m_min.real()) * 0.9);
-    m_min.imag(current_center.imag() - (current_center.imag() - m_min.imag()) * 0.9);
-    m_max.real(current_center.real() + (m_max.real() - current_center.real()) * 0.9);
-    m_max.imag(current_center.imag() + (m_max.imag() - current_center.imag()) * 0.9);
+    m_size *= 0.9;
 }
 
 int Mandelbrot::iterate(Complex c, int limit) {
@@ -55,7 +48,7 @@ void Mandelbrot::plot() {
     {
         for (int ic = 0; ic < m_image_width; ic++)
         {
-            Complex c (m_min.real() + (m_max.real() - m_min.real()) * ic / m_image_width, m_min.imag() + (m_max.imag() - m_min.imag()) * ir / m_image_height);
+            Complex c (m_center.real() - m_size.real() / 2.0 + m_size.real() * ic / m_image_width, m_center.imag() - m_size.imag() / 2.0 + m_size.imag() * ir / m_image_height);
             int n = iterate(c, m_max_iter);
             QColor color;
             if (n < m_max_iter && n > 0) {
